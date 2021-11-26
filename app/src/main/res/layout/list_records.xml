@@ -30,7 +30,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:text="price" />
+            android:text="date" />
 
 
         <TextView
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/sport_name"
-            android:text="amount" />
+            android:text="other details" />
 
 
         <TextView
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:layout_toEndOf="@id/sport_date"
-            android:text="weight" />
+            android:text="time" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
