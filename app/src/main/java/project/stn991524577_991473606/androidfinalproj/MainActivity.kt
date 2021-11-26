@@ -18,10 +18,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar_main))
-
-        binding.btnCheckRecords.setOnClickListener {
-            Toast.makeText(this, "check records clicked", Toast.LENGTH_LONG).show()
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
