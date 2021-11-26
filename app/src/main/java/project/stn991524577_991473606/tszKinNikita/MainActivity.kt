@@ -1,4 +1,4 @@
-package project.stn991524577_991473606.androidfinalproj
+package project.stn991524577_991473606.tszKinNikita
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import project.stn991524577_991473606.androidfinalproj.databinding.ActivityMainBinding
+import project.stn991524577_991473606.tszKinNikita.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {

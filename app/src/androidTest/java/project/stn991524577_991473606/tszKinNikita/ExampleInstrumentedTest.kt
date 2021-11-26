@@ -1,4 +1,4 @@
-package project.stn991524577_991473606.androidfinalproj
+package project.stn991524577_991473606.tszKinNikita
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

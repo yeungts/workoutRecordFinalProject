@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/addRecordFragment"
-        android:name="project.stn991524577_991473606.androidfinalproj.AddRecordFragment"
+        android:name="project.stn991524577_991473606.tszKinNikita.AddRecordFragment"
         android:label="fragment_add_record"
         tools:layout="@layout/fragment_add_record" />
     <fragment
         android:id="@+id/workoutListFragment"
-        android:name="project.stn991524577_991473606.androidfinalproj.WorkoutListFragment"
+        android:name="project.stn991524577_991473606.tszKinNikita.WorkoutListFragment"
         android:label="fragment_workout_list"
         tools:layout="@layout/fragment_workout_list" >
         <action

@@ -1,4 +1,4 @@
-package project.stn991524577_991473606.androidfinalproj
+package project.stn991524577_991473606.tszKinNikita
 
 import org.junit.Test
 
