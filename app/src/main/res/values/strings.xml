@@ -3,4 +3,13 @@
     <string name="action_add_record">Add</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="workout_types">
+        <item>Basketball</item>
+        <item>Running</item>
+        <item>Swimming</item>
+        <item>Climbing</item>
+        <item>Free weights</item>
+        <item>Cycling</item>
+    </string-array>
 </resources>

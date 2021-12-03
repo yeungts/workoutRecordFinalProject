@@ -9,7 +9,26 @@
         android:id="@+id/addRecordFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddRecordFragment"
         android:label="fragment_add_record"
-        tools:layout="@layout/fragment_add_record" />
+        tools:layout="@layout/fragment_add_record" >
+        <action
+            android:id="@+id/action_addRecordFragment_to_addBasketballFragment"
+            app:destination="@id/addBasketballFragment" />
+        <action
+            android:id="@+id/action_addRecordFragment_to_addRunningFragment"
+            app:destination="@id/addRunningFragment" />
+        <action
+            android:id="@+id/action_addRecordFragment_to_addClimbingFragment"
+            app:destination="@id/addClimbingFragment" />
+        <action
+            android:id="@+id/action_addRecordFragment_to_addSwimmingFragment"
+            app:destination="@id/addSwimmingFragment" />
+        <action
+            android:id="@+id/action_addRecordFragment_to_addFreeweightsFragment"
+            app:destination="@id/addFreeweightsFragment" />
+        <action
+            android:id="@+id/action_addRecordFragment_to_addCyclingFragment"
+            app:destination="@id/addCyclingFragment" />
+    </fragment>
     <fragment
         android:id="@+id/workoutListFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.WorkoutListFragment"
@@ -19,4 +38,34 @@
             android:id="@+id/action_workoutListFragment_to_addRecordFragment"
             app:destination="@id/addRecordFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addBasketballFragment"
+        android:name="project.stn991524577_991473606.tszKinNikita.AddBasketballFragment"
+        android:label="fragment_add_basketball"
+        tools:layout="@layout/fragment_add_basketball" />
+    <fragment
+        android:id="@+id/addRunningFragment"
+        android:name="project.stn991524577_991473606.tszKinNikita.AddRunningFragment"
+        android:label="fragment_add_running"
+        tools:layout="@layout/fragment_add_running" />
+    <fragment
+        android:id="@+id/addSwimmingFragment"
+        android:name="project.stn991524577_991473606.tszKinNikita.AddSwimmingFragment"
+        android:label="fragment_add_swimming"
+        tools:layout="@layout/fragment_add_swimming" />
+    <fragment
+        android:id="@+id/addClimbingFragment"
+        android:name="project.stn991524577_991473606.tszKinNikita.AddClimbingFragment"
+        android:label="fragment_add_climbing"
+        tools:layout="@layout/fragment_add_climbing" />
+    <fragment
+        android:id="@+id/addFreeweightsFragment"
+        android:name="project.stn991524577_991473606.tszKinNikita.AddFreeweightsFragment"
+        android:label="fragment_add_freeweights"
+        tools:layout="@layout/fragment_add_freeweights" />
+    <fragment
+        android:id="@+id/addCyclingFragment"
+        android:name="project.stn991524577_991473606.tszKinNikita.AddCyclingFragment"
+        android:label="fragment_add_cycling"
+        tools:layout="@layout/fragment_add_cycling" />
 </navigation>
