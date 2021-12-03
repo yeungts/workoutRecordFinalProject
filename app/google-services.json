@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "399001707443",
+    "project_id": "workoutrecord-65cd3",
+    "storage_bucket": "workoutrecord-65cd3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399001707443:android:05bc4859f12899021721c6",
+        "android_client_info": {
+          "package_name": "project.stn991524577_991473606.tszKinNikita"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399001707443-8tllabjjehfumrp8g049nifi9lmv9fn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSzlKwQHPysmYcUIl9eLkIj18v-8BlIww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399001707443-8tllabjjehfumrp8g049nifi9lmv9fn6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
