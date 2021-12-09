@@ -1,12 +1,19 @@
 package project.stn991524577_991473606.tszKinNikita
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentWorkoutListBinding
+import project.stn991524577_991473606.tszKinNikita.models.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.math.log
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,6 +31,14 @@ class WorkoutListFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
+    val adapter = WorkoutListAdapter {
+        Log.i("WorkoutApp", "item clicked")
+    }
+
+    val fireStoreDatabase = FirebaseFirestore.getInstance()
+    private var testList: MutableList<Workout> = mutableListOf<Workout>();
+
     private var _binding: FragmentWorkoutListBinding? = null
     // This property is only valid between onCreateView and
 // onDestroyView.
@@ -36,6 +51,80 @@ class WorkoutListFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        testList.add(BasketballWorkout("1", "1", "02-15-2016", "20", 40, 5, 20))
+        testList.add(ClimbingWorkout("2", "1", "02-16-2016", "40", 5000))
+        testList.add(FreeWeightWorkout("3", "1", "02-17-2016", "45"))
+
+        fireStoreDatabase.collection("basketballWorkouts")
+            .get()
+            .addOnCompleteListener{
+                val result: StringBuffer = StringBuffer()
+
+                if (it.isSuccessful){
+                    for(document in it.result!!){
+                        val timestamp = document.data.getValue("date") as com.google.firebase.Timestamp
+                        val milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
+                        val sdf = SimpleDateFormat("MM/dd/yyyy")
+                        val netDate = Date(milliseconds)
+                        val date = sdf.format(netDate).toString()
+//                        result.append(document.data.getValue("assists")).append(",")
+//                            .append(document.data.getValue("date")).append(",")
+//                            .append(document.data.getValue("distance")).append(",")
+//                            .append(document.data.getValue("points")).append(",")
+//                            .append(document.data.getValue("rebounds")).append(",")
+//                            .append(document.data.getValue("time")).append(",")
+//                            .append(document.data.getValue("userId")).append("|")
+
+                        Log.i("WorkoutApp", "assists: " + document.data.getValue("assists"))
+                        Log.i("WorkoutApp", "date: $date")
+                        Log.i("WorkoutApp", "distance: " + document.data.getValue("distance").toString())
+                        Log.i("WorkoutApp", "points: " + document.data.getValue("points").toString())
+                        Log.i("WorkoutApp", "rebounds: " + document.data.getValue("rebounds").toString())
+                        Log.i("WorkoutApp", "time: " + document.data.getValue("time").toString())
+                        Log.i("WorkoutApp", "userId: " + document.data.getValue("userId").toString())
+
+                        testList.add(BasketballWorkout("1", document.data.getValue("userId").toString(), date, document.data.getValue("distance").toString(),
+                            document.data.getValue("points").toString().toInt(), document.data.getValue("assists").toString().toInt(), document.data.getValue("rebounds").toString().toInt()))
+                    }
+
+                    adapter.submitList(testList)
+                    adapter.notifyDataSetChanged()
+
+                    if(result.isNotEmpty()){
+
+                    } else {
+                        System.out.println("Not Successfull")
+                    }
+                }
+            }
+
+        fireStoreDatabase.collection("cyclingWorkouts")
+            .get()
+            .addOnCompleteListener{
+                val result: StringBuffer = StringBuffer()
+
+                if (it.isSuccessful){
+                    for(document in it.result!!){
+                        val timestamp = document.data.getValue("date") as com.google.firebase.Timestamp
+                        val milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
+                        val sdf = SimpleDateFormat("MM/dd/yyyy")
+                        val netDate = Date(milliseconds)
+                        val date = sdf.format(netDate).toString()
+
+                        testList.add(CyclingWorkout("1", document.data.getValue("userId").toString(), date, document.data.getValue("time").toString(), document.data.getValue("distance").toString()))
+                    }
+
+                    adapter.submitList(testList)
+                    adapter.notifyDataSetChanged()
+
+                    if(result.isNotEmpty()){
+
+                    } else {
+                        System.out.println("Not Successfull")
+                    }
+                }
+            }
     }
 
     override fun onCreateView(
@@ -47,6 +136,16 @@ class WorkoutListFragment : Fragment() {
         (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbarWorkoutList)
         val view = binding.root
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.recycleView.layoutManager = LinearLayoutManager(this.context)
+        binding.recycleView.adapter = adapter
+
+        // add records that should be displayed
+        adapter.submitList(testList)
     }
 
     override fun onDestroyView() {
