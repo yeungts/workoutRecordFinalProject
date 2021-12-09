@@ -64,7 +64,11 @@
         android:id="@+id/addClimbingFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddClimbingFragment"
         android:label="fragment_add_climbing"
-        tools:layout="@layout/fragment_add_climbing" />
+        tools:layout="@layout/fragment_add_climbing" >
+        <action
+            android:id="@+id/action_addClimbingFragment_to_workoutListFragment"
+            app:destination="@id/workoutListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addFreeweightsFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddFreeweightsFragment"
