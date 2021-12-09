@@ -23,10 +23,10 @@
             android:id="@+id/recycleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scrollbars="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_workout_list"
-            tools:listitem="@layout/list_records" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_workout_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

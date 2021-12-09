@@ -1,12 +1,19 @@
 package project.stn991524577_991473606.tszKinNikita
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentWorkoutListBinding
+import project.stn991524577_991473606.tszKinNikita.models.BasketballWorkout
+import project.stn991524577_991473606.tszKinNikita.models.ClimbingWorkout
+import project.stn991524577_991473606.tszKinNikita.models.FreeWeightWorkout
+import project.stn991524577_991473606.tszKinNikita.models.Workout
+import kotlin.math.log
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,6 +31,8 @@ class WorkoutListFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var testList: MutableList<Workout> = mutableListOf<Workout>();
+
     private var _binding: FragmentWorkoutListBinding? = null
     // This property is only valid between onCreateView and
 // onDestroyView.
@@ -36,6 +45,10 @@ class WorkoutListFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        testList.add(BasketballWorkout("1", "1", "02-15-2016", "20", 40, 5, 20))
+        testList.add(ClimbingWorkout("2", "1", "02-16-2016", "40", 5000))
+        testList.add(FreeWeightWorkout("3", "1", "02-17-2016", "45"))
     }
 
     override fun onCreateView(
@@ -47,6 +60,19 @@ class WorkoutListFragment : Fragment() {
         (activity as AppCompatActivity?)!!.setSupportActionBar(binding.toolbarWorkoutList)
         val view = binding.root
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapter = WorkoutListAdapter {
+            Log.i("WorkoutApp", "item clicked")
+        }
+        binding.recycleView.layoutManager = LinearLayoutManager(this.context)
+        binding.recycleView.adapter = adapter
+
+        // add records that should be displayed
+        adapter.submitList(testList)
     }
 
     override fun onDestroyView() {
