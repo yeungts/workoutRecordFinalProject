@@ -45,7 +45,11 @@
         android:id="@+id/addBasketballFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddBasketballFragment"
         android:label="fragment_add_basketball"
-        tools:layout="@layout/fragment_add_basketball" />
+        tools:layout="@layout/fragment_add_basketball" >
+        <action
+            android:id="@+id/action_addBasketballFragment_to_workoutListFragment2"
+            app:destination="@id/workoutListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addRunningFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddRunningFragment"

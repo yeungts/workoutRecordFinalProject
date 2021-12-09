@@ -42,7 +42,13 @@ class AddBasketballFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentAddBasketballBinding.inflate(inflater, container, false)
 
+
         val view = binding.root
+
+        binding.addButton.setOnClickListener {
+            var action = AddBasketballFragmentDirections.actionAddBasketballFragmentToWorkoutListFragment2()
+        }
+
         return view
     }
 
