@@ -8,11 +8,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentWorkoutListBinding
 import project.stn991524577_991473606.tszKinNikita.models.BasketballWorkout
 import project.stn991524577_991473606.tszKinNikita.models.ClimbingWorkout
 import project.stn991524577_991473606.tszKinNikita.models.FreeWeightWorkout
 import project.stn991524577_991473606.tszKinNikita.models.Workout
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.log
 
 
@@ -31,6 +34,8 @@ class WorkoutListFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+
+    val fireStoreDatabase = FirebaseFirestore.getInstance()
     private var testList: MutableList<Workout> = mutableListOf<Workout>();
 
     private var _binding: FragmentWorkoutListBinding? = null
@@ -49,6 +54,43 @@ class WorkoutListFragment : Fragment() {
         testList.add(BasketballWorkout("1", "1", "02-15-2016", "20", 40, 5, 20))
         testList.add(ClimbingWorkout("2", "1", "02-16-2016", "40", 5000))
         testList.add(FreeWeightWorkout("3", "1", "02-17-2016", "45"))
+
+        fireStoreDatabase.collection("basketballWorkouts")
+            .get()
+            .addOnCompleteListener{
+                val result: StringBuffer = StringBuffer()
+
+                if (it.isSuccessful){
+                    for(document in it.result!!){
+                        result.append(document.data.getValue("assists")).append(",")
+                            .append(document.data.getValue("date")).append(",")
+                            .append(document.data.getValue("distance")).append(",")
+                            .append(document.data.getValue("points")).append(",")
+                            .append(document.data.getValue("rebounds")).append(",")
+                            .append(document.data.getValue("time")).append(",")
+                            .append(document.data.getValue("userId")).append("|")
+
+                        Log.i("WorkoutApp", "assists: " + document.data.getValue("assists"))
+                        val timestamp = document.data.getValue("date") as com.google.firebase.Timestamp
+                        val milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
+                        val sdf = SimpleDateFormat("MM/dd/yyyy")
+                        val netDate = Date(milliseconds)
+                        val date = sdf.format(netDate).toString()
+                        Log.i("WorkoutApp", "date: $date")
+                        Log.i("WorkoutApp", "distance: " + document.data.getValue("distance").toString())
+                        Log.i("WorkoutApp", "points: " + document.data.getValue("points").toString())
+                        Log.i("WorkoutApp", "rebounds: " + document.data.getValue("rebounds").toString())
+                        Log.i("WorkoutApp", "time: " + document.data.getValue("time").toString())
+                        Log.i("WorkoutApp", "userId: " + document.data.getValue("userId").toString())
+                    }
+
+                    if(result.isNotEmpty()){
+
+                    } else {
+                        System.out.println("Not Successfull")
+                    }
+                }
+            }
     }
 
     override fun onCreateView(
