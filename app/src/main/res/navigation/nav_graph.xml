@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_workoutListFragment_to_aboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_workoutListFragment_to_editCyclingFragment"
+            app:destination="@id/editCyclingFragment" />
     </fragment>
     <fragment
         android:id="@+id/addBasketballFragment"
@@ -179,4 +182,19 @@
         android:name="project.stn991524577_991473606.tszKinNikita.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/editCyclingFragment"
+        android:name="project.stn991524577_991473606.tszKinNikita.EditCyclingFragment"
+        android:label="fragment_edit_cycling"
+        tools:layout="@layout/fragment_edit_cycling" >
+        <action
+            android:id="@+id/action_editCyclingFragment_to_workoutListFragment"
+            app:destination="@id/workoutListFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
+        <argument
+            android:name="exercId"
+            app:argType="string" />
+    </fragment>
 </navigation>

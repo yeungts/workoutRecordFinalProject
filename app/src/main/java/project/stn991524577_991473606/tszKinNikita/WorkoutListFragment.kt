@@ -44,12 +44,16 @@ class WorkoutListFragment : Fragment() {
 
             if (action != null) {
             this.findNavController().navigate(action)
-        }
+            }
 
         } else if (it.getSportName().equals("Climbing")) {
             Log.i("WorkoutApp", "Climbing item clicked")
         } else if (it.getSportName().equals("Cycling")) {
-            Log.i("WorkoutApp", "Cycling item clicked")
+            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToEditCyclingFragment(args.userId, it.id)
+
+            if (action != null) {
+                this.findNavController().navigate(action)
+            }
         } else if (it.getSportName().equals("Free Weight")) {
             Log.i("WorkoutApp", "Free Weight item clicked")
         } else if (it.getSportName().equals("Running")) {
@@ -120,7 +124,7 @@ class WorkoutListFragment : Fragment() {
                         val netDate = Date(milliseconds)
                         val date = sdf.format(netDate).toString()
 
-                        testList.add(CyclingWorkout("1", document.data.getValue("userId").toString(), date, document.data.getValue("time").toString(), document.data.getValue("distance").toString()))
+                        testList.add(CyclingWorkout(document.id, document.data.getValue("userId").toString(), date, document.data.getValue("time").toString(), document.data.getValue("distance").toString()))
                     }
 
                     adapter.submitList(testList)
