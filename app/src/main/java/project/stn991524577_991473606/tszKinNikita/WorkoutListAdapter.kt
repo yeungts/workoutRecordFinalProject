@@ -34,7 +34,6 @@ class WorkoutListAdapter(private val onItemClicked: (Workout) -> Unit): ListAdap
         fun bind(item: Workout) {
             binding.sportDate.text = item.date
             binding.sportName.text = item.getSportName()
-            binding.sportOtherDetails.text = item.getSummary()
         }
     }
 

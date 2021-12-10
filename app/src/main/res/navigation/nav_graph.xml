@@ -17,15 +17,6 @@
             android:id="@+id/action_addRecordFragment_to_addRunningFragment"
             app:destination="@id/addRunningFragment" />
         <action
-            android:id="@+id/action_addRecordFragment_to_addClimbingFragment"
-            app:destination="@id/addClimbingFragment" />
-        <action
-            android:id="@+id/action_addRecordFragment_to_addSwimmingFragment"
-            app:destination="@id/addSwimmingFragment" />
-        <action
-            android:id="@+id/action_addRecordFragment_to_addFreeweightsFragment"
-            app:destination="@id/addFreeweightsFragment" />
-        <action
             android:id="@+id/action_addRecordFragment_to_addCyclingFragment"
             app:destination="@id/addCyclingFragment" />
         <action
@@ -45,9 +36,6 @@
             app:destination="@id/addRecordFragment" />
         <argument android:name="userId"
             app:argType="string" />
-        <action
-            android:id="@+id/action_workoutListFragment_to_recordDetailFragment"
-            app:destination="@id/recordDetailFragment" />
         <action
             android:id="@+id/action_workoutListFragment_to_helpFragment"
             app:destination="@id/helpFragment" />
@@ -86,42 +74,6 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/addSwimmingFragment"
-        android:name="project.stn991524577_991473606.tszKinNikita.AddSwimmingFragment"
-        android:label="fragment_add_swimming"
-        tools:layout="@layout/fragment_add_swimming" >
-        <action
-            android:id="@+id/action_addSwimmingFragment_to_workoutListFragment"
-            app:destination="@id/workoutListFragment" />
-        <argument
-            android:name="userId"
-            app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/addClimbingFragment"
-        android:name="project.stn991524577_991473606.tszKinNikita.AddClimbingFragment"
-        android:label="fragment_add_climbing"
-        tools:layout="@layout/fragment_add_climbing" >
-        <action
-            android:id="@+id/action_addClimbingFragment_to_workoutListFragment"
-            app:destination="@id/workoutListFragment" />
-        <argument
-            android:name="userId"
-            app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/addFreeweightsFragment"
-        android:name="project.stn991524577_991473606.tszKinNikita.AddFreeweightsFragment"
-        android:label="fragment_add_freeweights"
-        tools:layout="@layout/fragment_add_freeweights" >
-        <action
-            android:id="@+id/action_addFreeweightsFragment_to_workoutListFragment"
-            app:destination="@id/workoutListFragment" />
-        <argument
-            android:name="userId"
-            app:argType="string" />
-    </fragment>
-    <fragment
         android:id="@+id/addCyclingFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddCyclingFragment"
         android:label="fragment_add_cycling"
@@ -153,10 +105,6 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/recordDetailFragment"
-        android:name="project.stn991524577_991473606.tszKinNikita.RecordDetailFragment"
-        android:label="RecordDetailFragment" />
     <fragment
         android:id="@+id/helpFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.HelpFragment"

@@ -37,36 +37,16 @@ class WorkoutListFragment : Fragment() {
     val adapter = WorkoutListAdapter {
         var action: NavDirections? = null
         if (it.getSportName().equals("Basketball")) {
-            Log.i("WorkoutApp", "Basketball item clicked")
-
-            System.out.println(it.id)
-            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToEditBasketball(args.userId, it.id)
-
-            if (action != null) {
-            this.findNavController().navigate(action)
-            }
-
-        } else if (it.getSportName().equals("Climbing")) {
-            Log.i("WorkoutApp", "Climbing item clicked")
+            action = WorkoutListFragmentDirections.actionWorkoutListFragmentToEditBasketball(args.userId, it.id)
         } else if (it.getSportName().equals("Cycling")) {
-            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToEditCyclingFragment(args.userId, it.id)
-
-            if (action != null) {
-                this.findNavController().navigate(action)
-            }
-        } else if (it.getSportName().equals("Free Weight")) {
-            Log.i("WorkoutApp", "Free Weight item clicked")
+            action = WorkoutListFragmentDirections.actionWorkoutListFragmentToEditCyclingFragment(args.userId, it.id)
         } else if (it.getSportName().equals("Running")) {
             Log.i("WorkoutApp", "Running item clicked")
-        } else if (it.getSportName().equals("Swimming")) {
-            Log.i("WorkoutApp", "Swimming item clicked")
         }
 
-//        action = WorkoutListFragmentDirections.actionWorkoutListFragmentToRecordDetailFragment()
-//
-//        if (action != null) {
-//            this.findNavController().navigate(action)
-//        }
+        if (action != null) {
+            this.findNavController().navigate(action)
+        }
     }
 
     val fireStoreDatabase = FirebaseFirestore.getInstance()
@@ -125,6 +105,27 @@ class WorkoutListFragment : Fragment() {
                         val date = sdf.format(netDate).toString()
 
                         testList.add(CyclingWorkout(document.id, document.data.getValue("userId").toString(), date, document.data.getValue("time").toString(), document.data.getValue("distance").toString()))
+                    }
+
+                    adapter.submitList(testList)
+                    adapter.notifyDataSetChanged()
+                }
+            }
+
+        fireStoreDatabase.collection("runningWorkouts")
+            .whereEqualTo("userId",  fireStoreDatabase.document("/users/" + args.userId))
+            .get()
+            .addOnCompleteListener{
+
+                if (it.isSuccessful){
+                    for(document in it.result!!){
+                        val timestamp = document.data.getValue("date") as com.google.firebase.Timestamp
+                        val milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
+                        val sdf = SimpleDateFormat("MM/dd/yyyy")
+                        val netDate = Date(milliseconds)
+                        val date = sdf.format(netDate).toString()
+
+                        testList.add(RunningWorkout(document.id, document.data.getValue("userId").toString(), date, document.data.getValue("time").toString(), document.data.getValue("distance").toString()))
                     }
 
                     adapter.submitList(testList)
