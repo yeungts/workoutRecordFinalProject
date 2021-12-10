@@ -1,10 +1,14 @@
 package project.stn991524577_991473606.tszKinNikita
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.navigation.fragment.findNavController
+import com.google.firebase.firestore.FirebaseFirestore
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentAddRecordBinding
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentAddRunningBinding
 
@@ -22,7 +26,7 @@ class AddRunningFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    val fireStoreDatabase = FirebaseFirestore.getInstance()
     private var _binding: FragmentAddRunningBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -44,6 +48,54 @@ class AddRunningFragment : Fragment() {
         _binding = FragmentAddRunningBinding.inflate(inflater, container, false)
 
         val view = binding.root
+
+
+        binding.addButton.setOnClickListener {
+            var action = AddRunningFragmentDirections.actionAddRunningFragmentToWorkoutListFragment("")
+
+
+            var date : String = binding.date.text.toString()
+            var time : Int = binding.workoutLength.text.toString().toInt()
+            var distance : Double = binding.distance.text.toString().toDouble()
+
+            val climbingWorkout : MutableMap<String, Any> = HashMap()
+
+            climbingWorkout["date"] = date
+            climbingWorkout["distance"] = distance
+            climbingWorkout["time"] = time
+            climbingWorkout["userId"] = "/users/cLvaECuNLAjgGoE9vZx1"
+
+            if (date.isNullOrEmpty() || distance.equals(null)  || time.equals(null)){
+                val builder = AlertDialog.Builder(requireActivity())
+                builder.setTitle("")
+                builder.setMessage("Please fill in all fielfs to proceed with creating workout record.")
+                builder.setNeutralButton("OK") { dialog, which ->
+
+                }
+                builder.show()
+            } else {
+                fireStoreDatabase.collection("runningWorkouts")
+                    .add(climbingWorkout)
+                    .addOnSuccessListener {
+                        Log.d(TAG, "Added document with ID ${it.id}")
+
+                        if (action != null) {
+                            this.findNavController().navigate(action)
+                        }
+
+                    }
+                    .addOnFailureListener {
+                        Log.d(TAG, "Error adding document ${it}")
+                    }
+
+                binding.date.text!!.clear()
+                binding.workoutLength.text!!.clear()
+                binding.distance.text!!.clear()
+            }
+
+
+        }
+
         return view
     }
 

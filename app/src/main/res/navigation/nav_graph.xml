@@ -40,6 +40,7 @@
         <action
             android:id="@+id/action_workoutListFragment_to_addRecordFragment"
             app:destination="@id/addRecordFragment" />
+        <argument android:name="userId" />
     </fragment>
     <fragment
         android:id="@+id/addBasketballFragment"
@@ -54,12 +55,20 @@
         android:id="@+id/addRunningFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddRunningFragment"
         android:label="fragment_add_running"
-        tools:layout="@layout/fragment_add_running" />
+        tools:layout="@layout/fragment_add_running" >
+        <action
+            android:id="@+id/action_addRunningFragment_to_workoutListFragment"
+            app:destination="@id/workoutListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addSwimmingFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddSwimmingFragment"
         android:label="fragment_add_swimming"
-        tools:layout="@layout/fragment_add_swimming" />
+        tools:layout="@layout/fragment_add_swimming" >
+        <action
+            android:id="@+id/action_addSwimmingFragment_to_workoutListFragment"
+            app:destination="@id/workoutListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addClimbingFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddClimbingFragment"
@@ -73,17 +82,24 @@
         android:id="@+id/addFreeweightsFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddFreeweightsFragment"
         android:label="fragment_add_freeweights"
-        tools:layout="@layout/fragment_add_freeweights" />
+        tools:layout="@layout/fragment_add_freeweights" >
+        <action
+            android:id="@+id/action_addFreeweightsFragment_to_workoutListFragment"
+            app:destination="@id/workoutListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addCyclingFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.AddCyclingFragment"
         android:label="fragment_add_cycling"
-        tools:layout="@layout/fragment_add_cycling" />
+        tools:layout="@layout/fragment_add_cycling" >
+        <action
+            android:id="@+id/action_addCyclingFragment_to_workoutListFragment"
+            app:destination="@id/workoutListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="project.stn991524577_991473606.tszKinNikita.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        android:label="fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />

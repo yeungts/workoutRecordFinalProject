@@ -49,7 +49,7 @@ class AddClimbingFragment : Fragment() {
         val view = binding.root
 
         binding.addButton.setOnClickListener {
-            var action = AddClimbingFragmentDirections.actionAddClimbingFragmentToWorkoutListFragment()
+            var action = AddClimbingFragmentDirections.actionAddClimbingFragmentToWorkoutListFragment("")
 
 
             var date : String = binding.date.text.toString()

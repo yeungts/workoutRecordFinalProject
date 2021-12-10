@@ -1,5 +1,6 @@
 package project.stn991524577_991473606.tszKinNikita
 
+import android.app.LauncherActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentAddRecordBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -94,4 +96,8 @@ class AddRecordFragment : Fragment() {
                 }
             }
     }
+}
+
+class MyRecyclerView (private val sampleList: List<LauncherActivity.ListItem>): RecyclerView.Adapter<MyRecyclerView.MyViewHolder>() {
+
 }

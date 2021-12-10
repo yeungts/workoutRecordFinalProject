@@ -1,45 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
+
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        android:elevation="5dp">
+        android:elevation="5dp"
+        android:padding="8dp">
 
 
         <TextView
             android:id="@+id/sport_date"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="Date"
+            android:text="Workout Type"
             android:textSize="18sp"
             android:textStyle="bold" />
+
 
         <TextView
             android:id="@+id/sport_other_details"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:text="Workout Length" />
-
+            android:text="Workout Date" />
 
         <TextView
             android:id="@+id/sport_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="163dp"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/sport_date"
-            android:text="Distace" />
+            android:text="Workout length" />
 
 
-        <TextView
-            android:id="@+id/sport_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_toEndOf="@id/sport_other_details"
-            android:text="time" />
     </RelativeLayout>
-</layout>
+</androidx.cardview.widget.CardView>

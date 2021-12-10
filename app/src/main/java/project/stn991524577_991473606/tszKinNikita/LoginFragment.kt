@@ -52,7 +52,7 @@ class LoginFragment : Fragment() {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
 
         binding.btnLogin.setOnClickListener{
-            var action = LoginFragmentDirections.actionLoginFragmentToWorkoutListFragment()
+
             param1 = binding.email.text.toString()
             param2 = binding.password.text.toString()
             System.out.println(param1)
@@ -76,16 +76,19 @@ class LoginFragment : Fragment() {
                     .get()
                     .addOnCompleteListener{
                         val result: StringBuffer = StringBuffer()
-
                         if (it.isSuccessful){
                             for(document in it.result!!){
-                                result.append(document.data.getValue("fullName")).append(" ")
-                                    .append(document.data.getValue("email")).append("\n")
+                                result.append(document.id)
                             }
-                            System.out.println(result)
+                            System.out.println("User ID is" + result)
                             //binding?.textView?.setText(result)
+
+
                             if(result.isNotEmpty()){
+                                var userId = result.toString()
+                                var action = LoginFragmentDirections.actionLoginFragmentToWorkoutListFragment(userId)
                                 if (action != null) {
+
                                     this.findNavController().navigate(action)
                                 }
                             } else {

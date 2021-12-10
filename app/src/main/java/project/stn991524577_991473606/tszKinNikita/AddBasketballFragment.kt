@@ -50,7 +50,7 @@ class AddBasketballFragment : Fragment() {
         val view = binding.root
 
         binding.addButton.setOnClickListener {
-            var action = AddBasketballFragmentDirections.actionAddBasketballFragmentToWorkoutListFragment2()
+            var action = AddBasketballFragmentDirections.actionAddBasketballFragmentToWorkoutListFragment2("")
 
 
             var date : String = binding.date.text.toString()
