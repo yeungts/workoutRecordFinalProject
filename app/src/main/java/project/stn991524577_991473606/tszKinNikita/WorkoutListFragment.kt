@@ -60,7 +60,6 @@ class WorkoutListFragment : Fragment() {
             .whereEqualTo("userId", fireStoreDatabase.document("/users/" + userId))
             .get()
             .addOnCompleteListener{
-                val result: StringBuffer = StringBuffer()
 
                 if (it.isSuccessful){
                     for(document in it.result!!){
@@ -77,11 +76,6 @@ class WorkoutListFragment : Fragment() {
                     adapter.submitList(testList)
                     adapter.notifyDataSetChanged()
 
-                    if(result.isNotEmpty()){
-
-                    } else {
-                        System.out.println("Not Successfull")
-                    }
                 }
             }
 
@@ -89,7 +83,6 @@ class WorkoutListFragment : Fragment() {
             .whereEqualTo("userId",  fireStoreDatabase.document("/users/" + userId))
             .get()
             .addOnCompleteListener{
-                val result: StringBuffer = StringBuffer()
 
                 if (it.isSuccessful){
                     for(document in it.result!!){
@@ -104,12 +97,6 @@ class WorkoutListFragment : Fragment() {
 
                     adapter.submitList(testList)
                     adapter.notifyDataSetChanged()
-
-                    if(result.isNotEmpty()){
-
-                    } else {
-                        System.out.println("Not Successfull")
-                    }
                 }
             }
     }
