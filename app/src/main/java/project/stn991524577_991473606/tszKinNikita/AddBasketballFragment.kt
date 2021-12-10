@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.firestore.FirebaseFirestore
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentAddBasketballBinding
 
@@ -25,6 +26,8 @@ class AddBasketballFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    //val args: WorkoutListFragmentArgs by navArgs()
     val fireStoreDatabase = FirebaseFirestore.getInstance()
     private var _binding: FragmentAddBasketballBinding? = null
     // This property is only valid between onCreateView and
@@ -68,12 +71,12 @@ class AddBasketballFragment : Fragment() {
             basketballWorkout["points"] = points
             basketballWorkout["rebounds"] = rebounds
             basketballWorkout["time"] = time
-            basketballWorkout["userId"] = "/users/cLvaECuNLAjgGoE9vZx1"
+            //basketballWorkout["userId"] = "/users/${args.userId}"
 
             if (date.isNullOrEmpty() || assists.equals(null) || distance.equals(null) || points.equals(null) || rebounds.equals(null) || time.equals(null)){
                 val builder = AlertDialog.Builder(requireActivity())
                 builder.setTitle("")
-                builder.setMessage("Please fill in all fielfs to proceed with creating workout record.")
+                builder.setMessage("Please fill in all fields to proceed with creating workout record.")
                 builder.setNeutralButton("OK") { dialog, which ->
 
                 }

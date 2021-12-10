@@ -25,6 +25,7 @@ class AddCyclingFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
     val fireStoreDatabase = FirebaseFirestore.getInstance()
     private var _binding: FragmentAddCyclingBinding? = null
     // This property is only valid between onCreateView and

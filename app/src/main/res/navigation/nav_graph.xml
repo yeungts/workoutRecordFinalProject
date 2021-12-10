@@ -41,6 +41,9 @@
             android:id="@+id/action_workoutListFragment_to_addRecordFragment"
             app:destination="@id/addRecordFragment" />
         <argument android:name="userId" />
+        <action
+            android:id="@+id/action_workoutListFragment_to_recordDetailFragment"
+            app:destination="@id/recordDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/addBasketballFragment"
@@ -116,4 +119,8 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/recordDetailFragment"
+        android:name="project.stn991524577_991473606.tszKinNikita.RecordDetailFragment"
+        android:label="RecordDetailFragment" />
 </navigation>

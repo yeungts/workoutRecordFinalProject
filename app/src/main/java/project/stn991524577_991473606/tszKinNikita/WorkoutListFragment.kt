@@ -6,6 +6,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,7 +35,26 @@ class WorkoutListFragment : Fragment() {
     val args: WorkoutListFragmentArgs by navArgs()
 
     val adapter = WorkoutListAdapter {
-        Log.i("WorkoutApp", "item clicked")
+        var action: NavDirections? = null
+        if (it.getSportName().equals("Basketball")) {
+            Log.i("WorkoutApp", "Basketball item clicked")
+        } else if (it.getSportName().equals("Climbing")) {
+            Log.i("WorkoutApp", "Climbing item clicked")
+        } else if (it.getSportName().equals("Cycling")) {
+            Log.i("WorkoutApp", "Cycling item clicked")
+        } else if (it.getSportName().equals("Free Weight")) {
+            Log.i("WorkoutApp", "Free Weight item clicked")
+        } else if (it.getSportName().equals("Running")) {
+            Log.i("WorkoutApp", "Running item clicked")
+        } else if (it.getSportName().equals("Swimming")) {
+            Log.i("WorkoutApp", "Swimming item clicked")
+        }
+
+        action = WorkoutListFragmentDirections.actionWorkoutListFragmentToRecordDetailFragment()
+
+        if (action != null) {
+            this.findNavController().navigate(action)
+        }
     }
 
     val fireStoreDatabase = FirebaseFirestore.getInstance()
