@@ -25,8 +25,7 @@ class EditBasketball : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    val args: WorkoutListFragmentArgs by navArgs()
-
+    val args: EditBasketballArgs by navArgs()
     val fireStoreDatabase = FirebaseFirestore.getInstance()
     private var _binding: FragmentEditBasketballBinding  ? = null
 
@@ -51,10 +50,26 @@ class EditBasketball : Fragment() {
         _binding = FragmentEditBasketballBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        System.out.println("EX ID: " + args.exercId)
+
+        fireStoreDatabase.collection("basketballWorkouts").document(args.exercId).get().addOnCompleteListener{
+            if(it.isSuccessful){
+//                System.out.println(it.result?.data)
+//                System.out.println(it.result?.data?.getValue("assists"))
+                binding.assists.setText(it.result?.data?.getValue("assists").toString())
+                binding.distance.setText(it.result?.data?.getValue("distance").toString())
+                binding.points.setText(it.result?.data?.getValue("points").toString())
+                binding.rebounds.setText(it.result?.data?.getValue("rebounds").toString())
+                binding.workoutLength.setText(it.result?.data?.getValue("time").toString())
+            }
+
+        }
+
 
         binding.deleteButton.setOnClickListener {
 
-            //fireStoreDatabase.collection("basketballWorkouts").document(args.)
+
+            fireStoreDatabase.collection("basketballWorkouts").document(args.exercId).delete()
 
             val action = EditBasketballDirections.actionEditBasketballToWorkoutListFragment(args.userId)
 

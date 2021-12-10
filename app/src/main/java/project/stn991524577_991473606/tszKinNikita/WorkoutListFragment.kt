@@ -40,7 +40,7 @@ class WorkoutListFragment : Fragment() {
             Log.i("WorkoutApp", "Basketball item clicked")
 
             System.out.println(it.id)
-            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToEditBasketball(it.id, args.userId)
+            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToEditBasketball(args.userId, it.id)
 
             if (action != null) {
             this.findNavController().navigate(action)
@@ -165,7 +165,7 @@ class WorkoutListFragment : Fragment() {
             this.findNavController().navigate(action)
             return true
         } else if (id == R.id.action_about) {
-            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToHelpFragment()
+            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToAboutFragment()
             this.findNavController().navigate(action)
             return true
         } else if (id ==  R.id.action_help){
