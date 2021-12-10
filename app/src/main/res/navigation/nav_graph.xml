@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_addRecordFragment_to_workoutListFragment"
             app:destination="@id/workoutListFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/workoutListFragment"
@@ -53,6 +56,9 @@
         <action
             android:id="@+id/action_addBasketballFragment_to_workoutListFragment2"
             app:destination="@id/workoutListFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addRunningFragment"
@@ -62,6 +68,9 @@
         <action
             android:id="@+id/action_addRunningFragment_to_workoutListFragment"
             app:destination="@id/workoutListFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addSwimmingFragment"
@@ -71,6 +80,9 @@
         <action
             android:id="@+id/action_addSwimmingFragment_to_workoutListFragment"
             app:destination="@id/workoutListFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addClimbingFragment"
@@ -80,6 +92,9 @@
         <action
             android:id="@+id/action_addClimbingFragment_to_workoutListFragment"
             app:destination="@id/workoutListFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addFreeweightsFragment"
@@ -89,6 +104,9 @@
         <action
             android:id="@+id/action_addFreeweightsFragment_to_workoutListFragment"
             app:destination="@id/workoutListFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addCyclingFragment"
@@ -98,6 +116,9 @@
         <action
             android:id="@+id/action_addCyclingFragment_to_workoutListFragment"
             app:destination="@id/workoutListFragment" />
+        <argument
+            android:name="userId"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

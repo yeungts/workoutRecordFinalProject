@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentAddRecordBinding
 
@@ -28,6 +29,7 @@ class AddRecordFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    val args: WorkoutListFragmentArgs by navArgs()
     private var _binding: FragmentAddRecordBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -54,8 +56,9 @@ class AddRecordFragment : Fragment() {
         binding.btnNavigateToForm.setOnClickListener{
             var selectedWorkout = binding.spinnerWorkoutType.selectedItem.toString()
             var action: NavDirections? = null
+            System.out.println("ARG: " + args.userId)
             when (selectedWorkout) {
-                "Basketball" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddBasketballFragment()
+                "Basketball" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddBasketballFragment(args.userId)
                 "Running" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddRunningFragment()
                 "Swimming" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddSwimmingFragment()
                 "Climbing" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddClimbingFragment()

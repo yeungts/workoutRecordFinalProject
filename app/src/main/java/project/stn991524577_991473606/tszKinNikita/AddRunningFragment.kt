@@ -8,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.firebase.firestore.FirebaseFirestore
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentAddRecordBinding
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentAddRunningBinding
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +29,7 @@ class AddRunningFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    val args: WorkoutListFragmentArgs by navArgs()
     val fireStoreDatabase = FirebaseFirestore.getInstance()
     private var _binding: FragmentAddRunningBinding? = null
     // This property is only valid between onCreateView and
@@ -51,10 +55,26 @@ class AddRunningFragment : Fragment() {
 
 
         binding.addButton.setOnClickListener {
-            var action = AddRunningFragmentDirections.actionAddRunningFragmentToWorkoutListFragment("")
+            var action = AddRunningFragmentDirections.actionAddRunningFragmentToWorkoutListFragment(args.userId)
 
 
             var date : String = binding.date.text.toString()
+
+            System.out.println(date)
+            //val l = LocalDate.parse("2018-02-14 12:30", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+            val l = SimpleDateFormat("dd-MM-yyyy HH:mm").parse(date)
+            //val dt = Timestamp(l.year, l.monthValue, l.dayOfMonth, 12, 30, 0, 0)
+            //val dt = Timestamp()
+            //val dt = Timestamp(Date(l)
+
+            val dt = Timestamp(l.year, l.month, l.day, l.hours, l.minutes, 0, 0)
+
+            System.out.println("Year: " + l.year)
+            System.out.println("MOnth: " + l.month)
+            System.out.println("Dat: " + l.day)
+            System.out.println("hour: " + l.hours)
+            System.out.println("mins: " + l.minutes)
+            System.out.println(dt.toString())
             var time : Int = binding.workoutLength.text.toString().toInt()
             var distance : Double = binding.distance.text.toString().toDouble()
 
@@ -63,7 +83,7 @@ class AddRunningFragment : Fragment() {
             climbingWorkout["date"] = date
             climbingWorkout["distance"] = distance
             climbingWorkout["time"] = time
-            climbingWorkout["userId"] = "/users/cLvaECuNLAjgGoE9vZx1"
+            climbingWorkout["userId"] = fireStoreDatabase.document("/users/" + args.userId)
 
             if (date.isNullOrEmpty() || distance.equals(null)  || time.equals(null)){
                 val builder = AlertDialog.Builder(requireActivity())

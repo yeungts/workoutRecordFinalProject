@@ -1,16 +1,23 @@
 package project.stn991524577_991473606.tszKinNikita
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
+//import java.security.Timestamp
+import java.sql.Timestamp
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.firestore.FirebaseFirestore
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentAddBasketballBinding
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +34,7 @@ class AddBasketballFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    val args: WorkoutListFragmentArgs by navArgs()
     //val args: WorkoutListFragmentArgs by navArgs()
     val fireStoreDatabase = FirebaseFirestore.getInstance()
     private var _binding: FragmentAddBasketballBinding? = null
@@ -42,6 +50,7 @@ class AddBasketballFragment : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,10 +62,26 @@ class AddBasketballFragment : Fragment() {
         val view = binding.root
 
         binding.addButton.setOnClickListener {
-            var action = AddBasketballFragmentDirections.actionAddBasketballFragmentToWorkoutListFragment2("")
+            var action = AddBasketballFragmentDirections.actionAddBasketballFragmentToWorkoutListFragment2(args.userId)
 
 
             var date : String = binding.date.text.toString()
+
+            System.out.println(date)
+            //val l = LocalDate.parse("2018-02-14 12:30", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+            val l = SimpleDateFormat("dd-MM-yyyy HH:mm").parse(date)
+            //val dt = Timestamp(l.year, l.monthValue, l.dayOfMonth, 12, 30, 0, 0)
+            //val dt = Timestamp()
+            //val dt = Timestamp(Date(l)
+
+            val dt = Timestamp(l.year, l.month, l.day, l.hours, l.minutes, 0, 0)
+
+            System.out.println("Year: " + l.year)
+            System.out.println("MOnth: " + l.month)
+            System.out.println("Dat: " + l.day)
+            System.out.println("hour: " + l.hours)
+            System.out.println("mins: " + l.minutes)
+            System.out.println(dt.toString())
             var time : Int = binding.workoutLength.text.toString().toInt()
             var distance : Double = binding.distance.text.toString().toDouble()
             var points : Int = binding.points.text.toString().toInt()
@@ -65,13 +90,14 @@ class AddBasketballFragment : Fragment() {
 
             val basketballWorkout : MutableMap<String, Any> = HashMap()
 
-            basketballWorkout["date"] = date
+            basketballWorkout["date"] = dt
             basketballWorkout["assists"] = assists
             basketballWorkout["distance"] = distance
             basketballWorkout["points"] = points
             basketballWorkout["rebounds"] = rebounds
             basketballWorkout["time"] = time
             //basketballWorkout["userId"] = "/users/${args.userId}"
+            basketballWorkout["userId"] = fireStoreDatabase.document("/users/" + args.userId)
 
             if (date.isNullOrEmpty() || assists.equals(null) || distance.equals(null) || points.equals(null) || rebounds.equals(null) || time.equals(null)){
                 val builder = AlertDialog.Builder(requireActivity())

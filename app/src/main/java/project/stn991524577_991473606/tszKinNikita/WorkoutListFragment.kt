@@ -77,7 +77,7 @@ class WorkoutListFragment : Fragment() {
         System.out.println("Received userID arg " + userId)
 
         fireStoreDatabase.collection("basketballWorkouts")
-            .whereEqualTo("userId", fireStoreDatabase.document("/users/" + userId))
+            .whereEqualTo("userId", fireStoreDatabase.document("/users/" + args.userId))
             .get()
             .addOnCompleteListener{
 
@@ -100,7 +100,7 @@ class WorkoutListFragment : Fragment() {
             }
 
         fireStoreDatabase.collection("cyclingWorkouts")
-            .whereEqualTo("userId",  fireStoreDatabase.document("/users/" + userId))
+            .whereEqualTo("userId",  fireStoreDatabase.document("/users/" + args.userId))
             .get()
             .addOnCompleteListener{
 
@@ -153,7 +153,7 @@ class WorkoutListFragment : Fragment() {
         val id = item.itemId
         if (id == R.id.action_add) {
             Toast.makeText(activity, "add clicked", Toast.LENGTH_LONG).show()
-            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToAddRecordFragment()
+            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToAddRecordFragment(args.userId)
             this.findNavController().navigate(action)
             return true
         }
