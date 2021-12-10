@@ -59,11 +59,11 @@ class AddRecordFragment : Fragment() {
             System.out.println("ARG: " + args.userId)
             when (selectedWorkout) {
                 "Basketball" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddBasketballFragment(args.userId)
-                "Running" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddRunningFragment()
-                "Swimming" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddSwimmingFragment()
-                "Climbing" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddClimbingFragment()
-                "Free weights" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddFreeweightsFragment()
-                "Cycling" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddCyclingFragment()
+                "Running" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddRunningFragment(args.userId)
+                "Swimming" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddSwimmingFragment(args.userId)
+                "Climbing" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddClimbingFragment(args.userId)
+                "Free weights" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddFreeweightsFragment(args.userId)
+                "Cycling" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddCyclingFragment(args.userId)
             }
 
             if (action != null) {

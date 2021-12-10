@@ -38,6 +38,14 @@ class WorkoutListFragment : Fragment() {
         var action: NavDirections? = null
         if (it.getSportName().equals("Basketball")) {
             Log.i("WorkoutApp", "Basketball item clicked")
+
+            System.out.println(it.id)
+            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToEditBasketball(it.id, args.userId)
+
+            if (action != null) {
+            this.findNavController().navigate(action)
+        }
+
         } else if (it.getSportName().equals("Climbing")) {
             Log.i("WorkoutApp", "Climbing item clicked")
         } else if (it.getSportName().equals("Cycling")) {
@@ -50,11 +58,11 @@ class WorkoutListFragment : Fragment() {
             Log.i("WorkoutApp", "Swimming item clicked")
         }
 
-        action = WorkoutListFragmentDirections.actionWorkoutListFragmentToRecordDetailFragment()
-
-        if (action != null) {
-            this.findNavController().navigate(action)
-        }
+//        action = WorkoutListFragmentDirections.actionWorkoutListFragmentToRecordDetailFragment()
+//
+//        if (action != null) {
+//            this.findNavController().navigate(action)
+//        }
     }
 
     val fireStoreDatabase = FirebaseFirestore.getInstance()
@@ -89,7 +97,7 @@ class WorkoutListFragment : Fragment() {
                         val netDate = Date(milliseconds)
                         val date = sdf.format(netDate).toString()
 
-                        testList.add(BasketballWorkout("1", document.data.getValue("userId").toString(), date, document.data.getValue("distance").toString(),
+                        testList.add(BasketballWorkout(document.id, document.data.getValue("userId").toString(), date, document.data.getValue("distance").toString(),
                             document.data.getValue("points").toString().toInt(), document.data.getValue("assists").toString().toInt(), document.data.getValue("rebounds").toString().toInt()))
                     }
 
@@ -154,6 +162,14 @@ class WorkoutListFragment : Fragment() {
         if (id == R.id.action_add) {
             Toast.makeText(activity, "add clicked", Toast.LENGTH_LONG).show()
             val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToAddRecordFragment(args.userId)
+            this.findNavController().navigate(action)
+            return true
+        } else if (id == R.id.action_about) {
+            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToHelpFragment()
+            this.findNavController().navigate(action)
+            return true
+        } else if (id ==  R.id.action_help){
+            val action = WorkoutListFragmentDirections.actionWorkoutListFragmentToHelpFragment()
             this.findNavController().navigate(action)
             return true
         }
