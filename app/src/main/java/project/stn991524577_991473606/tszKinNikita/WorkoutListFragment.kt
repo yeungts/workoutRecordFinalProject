@@ -53,9 +53,6 @@ class WorkoutListFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
-//        testList.add(BasketballWorkout("1", "1", "02-15-2016", "20", 40, 5, 20))
-//        testList.add(ClimbingWorkout("2", "1", "02-16-2016", "40", 5000))
-//        testList.add(FreeWeightWorkout("3", "1", "02-17-2016", "45"))
         val userId = args.userId
         System.out.println("Received userID arg " + userId)
 
@@ -67,34 +64,16 @@ class WorkoutListFragment : Fragment() {
 
                 if (it.isSuccessful){
                     for(document in it.result!!){
-                        //val timestamp = document.data.getValue("date") as com.google.firebase.Timestamp
+                        val timestamp = document.data.getValue("date") as com.google.firebase.Timestamp
+                        val milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
+                        val sdf = SimpleDateFormat("MM/dd/yyyy")
+                        val netDate = Date(milliseconds)
+                        val date = sdf.format(netDate).toString()
 
-                            val timestamp = document.data.getValue("date").toString()
-//                        val milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
-//                        val sdf = SimpleDateFormat("MM/dd/yyyy")
-//                        val netDate = Date(milliseconds)
-//                        val date = sdf.format(netDate).toString()
-//                        result.append(document.data.getValue("assists")).append(",")
-//                            .append(document.data.getValue("date")).append(",")
-//                            .append(document.data.getValue("distance")).append(",")
-//                            .append(document.data.getValue("points")).append(",")
-//                            .append(document.data.getValue("rebounds")).append(",")
-//                            .append(document.data.getValue("time")).append(",")
-//                            .append(document.data.getValue("userId")).append("|")
-
-                        Log.i("WorkoutApp", "assists: " + document.data.getValue("assists"))
-                        Log.i("WorkoutApp", "date: $timestamp")
-                        Log.i("WorkoutApp", "distance: " + document.data.getValue("distance").toString())
-                        Log.i("WorkoutApp", "points: " + document.data.getValue("points").toString())
-                        Log.i("WorkoutApp", "rebounds: " + document.data.getValue("rebounds").toString())
-                        Log.i("WorkoutApp", "time: " + document.data.getValue("time").toString())
-                        Log.i("WorkoutApp", "userId: " + document.data.getValue("userId").toString())
-
-                        testList.add(BasketballWorkout("1", document.data.getValue("userId").toString(), timestamp, document.data.getValue("distance").toString(),
+                        testList.add(BasketballWorkout("1", document.data.getValue("userId").toString(), date, document.data.getValue("distance").toString(),
                             document.data.getValue("points").toString().toInt(), document.data.getValue("assists").toString().toInt(), document.data.getValue("rebounds").toString().toInt()))
                     }
 
-                    binding.recycleView.adapter = MyRe
                     adapter.submitList(testList)
                     adapter.notifyDataSetChanged()
 
@@ -106,33 +85,33 @@ class WorkoutListFragment : Fragment() {
                 }
             }
 
-//        fireStoreDatabase.collection("cyclingWorkouts")
-//            .whereEqualTo("userId",  fireStoreDatabase.document("/users/" + userId))
-//            .get()
-//            .addOnCompleteListener{
-//                val result: StringBuffer = StringBuffer()
-//
-//                if (it.isSuccessful){
-//                    for(document in it.result!!){
-//                        //val timestamp = document.data.getValue("date") as com.google.firebase.Timestamp
-////                        val milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
-////                        val sdf = SimpleDateFormat("MM/dd/yyyy")
-////                        val netDate = Date(milliseconds)
-////                        val date = sdf.format(netDate).toString()
-//
-//                        testList.add(CyclingWorkout("1", document.data.getValue("userId").toString(), "date", document.data.getValue("time").toString(), document.data.getValue("distance").toString()))
-//                    }
-//                    System.out.println(testList.size)
-//                    adapter.submitList(testList)
-//                    adapter.notifyDataSetChanged()
-//
-//                    if(result.isNotEmpty()){
-//
-//                    } else {
-//                        System.out.println("Not Successfull")
-//                    }
-//                }
-//            }
+        fireStoreDatabase.collection("cyclingWorkouts")
+            .whereEqualTo("userId",  fireStoreDatabase.document("/users/" + userId))
+            .get()
+            .addOnCompleteListener{
+                val result: StringBuffer = StringBuffer()
+
+                if (it.isSuccessful){
+                    for(document in it.result!!){
+                        val timestamp = document.data.getValue("date") as com.google.firebase.Timestamp
+                        val milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
+                        val sdf = SimpleDateFormat("MM/dd/yyyy")
+                        val netDate = Date(milliseconds)
+                        val date = sdf.format(netDate).toString()
+
+                        testList.add(CyclingWorkout("1", document.data.getValue("userId").toString(), date, document.data.getValue("time").toString(), document.data.getValue("distance").toString()))
+                    }
+
+                    adapter.submitList(testList)
+                    adapter.notifyDataSetChanged()
+
+                    if(result.isNotEmpty()){
+
+                    } else {
+                        System.out.println("Not Successfull")
+                    }
+                }
+            }
     }
 
     override fun onCreateView(
@@ -151,9 +130,6 @@ class WorkoutListFragment : Fragment() {
 
         binding.recycleView.layoutManager = LinearLayoutManager(this.context)
         binding.recycleView.adapter = adapter
-
-        // add records that should be displayed
-        //adapter.submitList(testList)
     }
 
     override fun onDestroyView() {

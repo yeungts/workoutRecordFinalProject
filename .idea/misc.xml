@@ -10,20 +10,18 @@
         <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/androidFinalProj/app/src/main/res/layout/fragment_workout_list.xml" value="0.371875" />
         <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/androidFinalProj/app/src/main/res/layout/list_records.xml" value="0.28940217391304346" />
         <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/androidFinalProj/app/src/main/res/menu/menu_main.xml" value="0.371875" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/fragment_add_basketball.xml" value="0.20520833333333333" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/fragment_add_climbing.xml" value="0.20520833333333333" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/fragment_add_cycling.xml" value="0.20425724637681159" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/fragment_add_freeweights.xml" value="0.20885416666666667" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/fragment_add_record.xml" value="0.20520833333333333" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/fragment_add_running.xml" value="0.20520833333333333" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/fragment_add_swimming.xml" value="0.20520833333333333" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/fragment_login.xml" value="0.20520833333333333" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/fragment_register.xml" value="0.20885416666666667" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/fragment_workout_list.xml" value="0.20885416666666667" />
+        <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/list_record.xml" value="0.21331521739130435" />
         <entry key="..\:/ken/Documents/WORK/9 - Fall 2021/PROG 39402/Project/workoutRecordFinalProject/app/src/main/res/layout/list_records.xml" value="0.20885416666666667" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_add_basketball.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_add_climbing.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_add_cycling.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_add_freeweights.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_add_running.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_add_swimming.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.19630192502532928" />
-        <entry key="app/src/main/res/layout/fragment_workout_list.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/list_record.xml" value="0.2640625" />
-        <entry key="app/src/main/res/layout/list_records.xml" value="0.23020833333333332" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3223958333333333" />
-        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.31743589743589745" />
       </map>
     </option>
   </component>

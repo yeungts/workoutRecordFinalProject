@@ -97,7 +97,3 @@ class AddRecordFragment : Fragment() {
             }
     }
 }
-
-class MyRecyclerView (private val sampleList: List<LauncherActivity.ListItem>): RecyclerView.Adapter<MyRecyclerView.MyViewHolder>() {
-
-}
