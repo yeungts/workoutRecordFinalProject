@@ -20,9 +20,10 @@
         <entry key="app/src/main/res/layout/fragment_add_running.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_add_swimming.xml" value="0.23020833333333332" />
         <entry key="app/src/main/res/layout/fragment_edit_basketball.xml" value="0.20199275362318841" />
-        <entry key="app/src/main/res/layout/fragment_edit_cycling.xml" value="0.37273550724637683" />
+        <entry key="app/src/main/res/layout/fragment_edit_cycling.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_edit_running.xml" value="0.29739583333333336" />
         <entry key="app/src/main/res/layout/fragment_help.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.19630192502532928" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_workout_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/list_record.xml" value="0.2640625" />
         <entry key="app/src/main/res/layout/list_records.xml" value="0.23020833333333332" />

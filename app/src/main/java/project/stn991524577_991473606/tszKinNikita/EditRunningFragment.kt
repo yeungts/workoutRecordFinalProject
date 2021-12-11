@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.firestore.FirebaseFirestore
-import project.stn991524577_991473606.tszKinNikita.databinding.FragmentEditBasketballBinding
 import project.stn991524577_991473606.tszKinNikita.databinding.FragmentEditCyclingBinding
+import project.stn991524577_991473606.tszKinNikita.databinding.FragmentEditRunningBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,17 +18,16 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [EditCyclingFragment.newInstance] factory method to
+ * Use the [EditRunningFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class EditCyclingFragment : Fragment() {
+class EditRunningFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    val args: EditCyclingFragmentArgs by navArgs()
     val fireStoreDatabase = FirebaseFirestore.getInstance()
-    private var _binding: FragmentEditCyclingBinding? = null
-
+    private var _binding: FragmentEditRunningBinding? = null
+    val args: EditRunningFragmentArgs by navArgs()
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,13 +42,10 @@ class EditCyclingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentEditCyclingBinding.inflate(inflater, container, false)
+        _binding = FragmentEditRunningBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        System.out.println("EX ID: " + args.exercId)
-
-        fireStoreDatabase.collection("cyclingWorkouts").document(args.exercId).get().addOnCompleteListener{
+        fireStoreDatabase.collection("runningWorkouts").document(args.exercId).get().addOnCompleteListener{
             if(it.isSuccessful){
                 binding.distance.setText(it.result?.data?.getValue("distance").toString())
                 binding.workoutLength.setText(it.result?.data?.getValue("time").toString())
@@ -61,9 +57,9 @@ class EditCyclingFragment : Fragment() {
         binding.deleteButton.setOnClickListener {
 
 
-            fireStoreDatabase.collection("cyclingWorkouts").document(args.exercId).delete()
+            fireStoreDatabase.collection("runningWorkouts").document(args.exercId).delete()
 
-            val action = EditCyclingFragmentDirections.actionEditCyclingFragmentToWorkoutListFragment(args.userId)
+            val action = EditRunningFragmentDirections.actionEditRunningFragmentToWorkoutListFragment(args.userId)
 
             if (action != null) {
                 this.findNavController().navigate(action)
@@ -88,9 +84,9 @@ class EditCyclingFragment : Fragment() {
 //            basketballWorkout["rebounds"] = rebounds
             basketballWorkout["time"] = time
 
-            fireStoreDatabase.collection("cyclingWorkouts").document(args.exercId).update(basketballWorkout)
+            fireStoreDatabase.collection("runningWorkouts").document(args.exercId).update(basketballWorkout)
                 .addOnSuccessListener {
-                    val action = EditCyclingFragmentDirections.actionEditCyclingFragmentToWorkoutListFragment(args.userId)
+                    val action = EditRunningFragmentDirections.actionEditRunningFragmentToWorkoutListFragment(args.userId)
 
                     if (action != null){
                         this.findNavController().navigate(action)
@@ -108,12 +104,12 @@ class EditCyclingFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment EditCyclingFragment.
+         * @return A new instance of fragment EditRunningFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            EditCyclingFragment().apply {
+            EditRunningFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
