@@ -60,9 +60,6 @@ class AddRecordFragment : Fragment() {
             when (selectedWorkout) {
                 "Basketball" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddBasketballFragment(args.userId)
                 "Running" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddRunningFragment(args.userId)
-                "Swimming" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddSwimmingFragment(args.userId)
-                "Climbing" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddClimbingFragment(args.userId)
-                "Free weights" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddFreeweightsFragment(args.userId)
                 "Cycling" -> action = AddRecordFragmentDirections.actionAddRecordFragmentToAddCyclingFragment(args.userId)
             }
 

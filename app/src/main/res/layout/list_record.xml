@@ -13,17 +13,9 @@
             android:id="@+id/sport_date"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="Workout Type"
+            android:text="Workout Date"
             android:textSize="18sp"
             android:textStyle="bold" />
-
-
-        <TextView
-            android:id="@+id/sport_other_details"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Workout Date" />
 
         <TextView
             android:id="@+id/sport_name"
@@ -32,7 +24,7 @@
             android:layout_marginStart="163dp"
             android:layout_marginTop="5dp"
             android:layout_toEndOf="@id/sport_date"
-            android:text="Workout length" />
+            android:text="Workout type" />
 
 
     </RelativeLayout>
