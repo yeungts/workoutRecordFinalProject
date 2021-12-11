@@ -41,7 +41,7 @@ class WorkoutListFragment : Fragment() {
         } else if (it.getSportName().equals("Cycling")) {
             action = WorkoutListFragmentDirections.actionWorkoutListFragmentToEditCyclingFragment(args.userId, it.id)
         } else if (it.getSportName().equals("Running")) {
-            Log.i("WorkoutApp", "Running item clicked")
+            action = WorkoutListFragmentDirections.actionWorkoutListFragmentToEditRunningFragment(args.userId, it.id)
         }
 
         if (action != null) {

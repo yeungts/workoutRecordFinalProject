@@ -69,7 +69,7 @@ class EditRunningFragment : Fragment() {
 
         binding.editButton.setOnClickListener {
 
-            val basketballWorkout : MutableMap<String, Any> = HashMap()
+            val runningWorkout : MutableMap<String, Any> = HashMap()
 
             var time : Int = binding.workoutLength.text.toString().toInt()
             var distance : Double = binding.distance.text.toString().toDouble()
@@ -79,12 +79,12 @@ class EditRunningFragment : Fragment() {
 
             //basketballWorkout["date"] = dt
             //basketballWorkout["assists"] = assists
-            basketballWorkout["distance"] = distance
+            runningWorkout["distance"] = distance
 //            basketballWorkout["points"] = points
 //            basketballWorkout["rebounds"] = rebounds
-            basketballWorkout["time"] = time
+            runningWorkout["time"] = time
 
-            fireStoreDatabase.collection("runningWorkouts").document(args.exercId).update(basketballWorkout)
+            fireStoreDatabase.collection("runningWorkouts").document(args.exercId).update(runningWorkout)
                 .addOnSuccessListener {
                     val action = EditRunningFragmentDirections.actionEditRunningFragmentToWorkoutListFragment(args.userId)
 
